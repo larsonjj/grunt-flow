@@ -1,8 +1,6 @@
 'use strict';
 
 var grunt = require('grunt');
-var spawn = require('child_process').spawn;
-var flow = require('flow-bin');
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -30,11 +28,14 @@ exports.flow = {
         done();
     },
     int_check: function(test) {
+        // Expect 1 assertion
         test.expect(1);
 
+        // Check to see if output from flow matches the correct number of errors
         var output = grunt.file.read('tmp/int-check');
         test.ok(/Found 1 error/.test(output));
 
+        // Test complete
         test.done();
     }
 };
