@@ -8,7 +8,6 @@
 
 'use strict';
 
-var spawn = require('child_process').spawn;
 var execFile = require('child_process').execFile;
 var flow = require('flow-bin');
 

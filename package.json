@@ -10,7 +10,11 @@
     "url": "jakelarson.io"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin",
+    "flow",
+    "facebook",
+    "static type",
+    "validator"
   ],
   "main": "Gruntfile.js",
   "engines": {
@@ -25,15 +29,10 @@
     "jshint-stylish": "~0.1.5",
     "load-grunt-tasks": "~0.3.0"
   },
-  "bin": {
-    "optipng": "cli.js"
-  },
   "scripts": {
-    "postinstall": "node lib/install.js",
     "test": "grunt test"
   },
   "dependencies": {
-    "async": "^0.9.0",
     "flow-bin": "^0.1.1"
   }
 }
