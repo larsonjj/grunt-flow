@@ -36,8 +36,7 @@ module.exports = function(grunt) {
                 // split file into array of lines
                 var lines = string.replace(/\r\n/g, '\n').split(/\n/);
 
-                // keep track of new errors (start with false)
-                var newError = false;
+                // keep track of new errors (-1 means empty line, so 0 means new line)
                 var currentErrorLineIndex = -1;
                 var newOutputArray = [];
                 lines.forEach(function(line, i) {
@@ -48,19 +47,22 @@ module.exports = function(grunt) {
                     } else {
                         // if line is empty, toggle newError
                         if (!line) {
-                            newError = !newError;
+                            // reset current error line index
+                            currentErrorLineIndex = -1;
                         }
                         else {
-                            // Keep track of current error's line index
-                            currentErrorLineIndex = newError ? currentErrorLineIndex += 1 : 0;
+                            // Increment currentErrorLineIndex for every non-empty line
+                            currentErrorLineIndex = currentErrorLineIndex += 1;
                         }
 
                         var currentLine = line.split(/\:/);
                         var colonArray = [];
                         currentLine.forEach(function(item, j) {
+
                             // Should match "This type is incompatible with"
                             if (currentLine.length < 2) {
                                 return colonArray.push(chalk.red(item));
+
                             // Should match line number indexes
                             } else if (/\,/.test(item) && j > 1) {
                                 var lineColArray = [];
@@ -68,19 +70,24 @@ module.exports = function(grunt) {
                                     lineColArray.push(chalk.cyan(lineCol));
                                 });
                                 return colonArray.push(lineColArray.join(','));
+
                             // Should match line number of error
                             } else if (parseInt(item, 10)) {
                                 return colonArray.push(chalk.yellow(item));
+
                             // Should match last item (data type)
                             } else if (currentLine.length > 2 && (currentLine.length - 1) === j) {
+
                                 // Should match first occurance of data type
                                 if (currentErrorLineIndex === 0) {
                                     return colonArray.push(chalk.red(item));
                                 } else {
                                     return colonArray.push(chalk.green(item));
                                 }
+
                             // Should match first item
                             } else if (currentLine.length > 2 && j === 0) {
+
                                 // Should match first occurance of a filepath
                                 if (currentErrorLineIndex === 0) {
                                     return colonArray.push(chalk.blue(item));
@@ -88,6 +95,7 @@ module.exports = function(grunt) {
                                     return colonArray.push(chalk.magenta(item));
                                 }
                             }
+
                             // Match everything else
                             else {
                                 return colonArray.push(chalk.underline(item));
