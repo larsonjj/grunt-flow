@@ -29,7 +29,7 @@ module.exports = function(grunt) {
 
         var flowCB = function(output, done) {
             if (options.testing) {
-                grunt.file.write('tmp/int-check.js', output);
+                grunt.file.write('tmp/int-check', output);
             }
             done();
         };

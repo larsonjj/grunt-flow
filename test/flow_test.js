@@ -32,7 +32,7 @@ exports.flow = {
     int_check: function(test) {
         test.expect(1);
 
-        var output = grunt.file.read('tmp/int-check.js');
+        var output = grunt.file.read('tmp/int-check');
         test.ok(/Found 1 error/.test(output));
 
         test.done();

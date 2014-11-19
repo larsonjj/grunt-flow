@@ -1,4 +1,4 @@
-# grunt-flow
+# grunt-flow [![Build Status](https://secure.travis-ci.org/larsonjj/grunt-flow.png?branch=master)]
 
 > Validates JavaScript with Facebook's [Flow](https://github.com/facebook/flow) Library
 
