@@ -78,6 +78,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+<strong>v0.0.3</strong> - Fixed colorized output
+
 <strong>v0.0.2</strong> - Added `style` option to enable colorized output
 
 <strong>v0.0.1</strong> - Initial release
