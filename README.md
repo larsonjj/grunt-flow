@@ -1,4 +1,4 @@
-# grunt-flow [![Build Status](https://secure.travis-ci.org/larsonjj/grunt-flow.png?branch=master)]
+# grunt-flow ![Build Status](https://secure.travis-ci.org/larsonjj/grunt-flow.png?branch=master)
 
 > Validates JavaScript with Facebook's [Flow](https://github.com/facebook/flow) Library
 
@@ -24,9 +24,22 @@ In your project's Gruntfile, add a section named `flow` to the data object passe
 
 ```js
 grunt.initConfig({
-  flow: {}
+  flow: {
+    options: {}
+  }
 })
 ```
+
+### Options
+
+#### options.style
+Type: `String`
+Default value: `color`
+
+A string value that is used to determine flow output styling. There are two options to choose from:
+
+1. `color` - This will colorize the output from flow
+2. `none` - This will keep the default standard text output from flow without any color.
 
 ### Usage
 
@@ -42,12 +55,30 @@ grunt.initConfig({
 .*/node_modules/flow-bin
 ```
 
+You can look up more information on the `.flowconfig` file on the flow [website](http://flowtype.org/docs/advanced-configuration.html#_)
+
+#### Task
+
+Within your Gruntfile.js, add the following code to enable colorized output for flow.
+
+```js
+grunt.initConfig({
+  flow: {
+    options: {
+        style: 'color'
+    }
+  }
+})
+```
+
 
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+
+<strong>v0.0.2</strong> - Added `style` option to enable colorized output
 
 <strong>v0.0.1</strong> - Initial release
 
