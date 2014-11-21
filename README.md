@@ -26,7 +26,8 @@ In your project's Gruntfile, add a section named `flow` to the data object passe
 grunt.initConfig({
   flow: {
     options: {}
-  }
+  },
+  files: {}
 })
 ```
 
@@ -66,7 +67,8 @@ grunt.initConfig({
   flow: {
     options: {
         style: 'color'
-    }
+    },
+    files: {}
   }
 })
 ```
