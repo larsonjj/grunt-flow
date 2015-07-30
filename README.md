@@ -68,7 +68,7 @@ grunt.initConfig({
     options: {
         style: 'color'
     },
-    files: {}
+    files: {}  // Flow doesn't use this, but it is needed for Grunt to run properly
   }
 })
 ```
@@ -80,6 +80,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+<strong>v1.0.0</strong> - Updated to latest version of flow (v0.14.0)
+
 <strong>v0.0.3</strong> - Fixed colorized output
 
 <strong>v0.0.2</strong> - Added `style` option to enable colorized output
@@ -87,4 +89,4 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 <strong>v0.0.1</strong> - Initial release
 
 ## License
-Copyright (c) 2014 Jake Larson. Licensed under the MIT license.
+Copyright (c) 2015 Jake Larson. Licensed under the MIT license.
