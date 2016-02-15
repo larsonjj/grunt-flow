@@ -109,6 +109,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+<strong>v1.0.3</strong> - Fixed logic so that all error codes above `0` cause a grunt failure
+
 <strong>v1.0.2</strong> - Added `server` option to allow for using the flow background server with the [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch) task.
 
 <strong>v1.0.1</strong> - Added logic to correctly exit task on Flow error.

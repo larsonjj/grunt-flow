@@ -1,6 +1,6 @@
 {
   "name": "grunt-flow",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Validates JavaScript with Facebook's Flow Library",
   "homepage": "https://github.com/larsonjj/grunt-flow",
   "repository": "https://github.com/larsonjj/grunt-flow",
