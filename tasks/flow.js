@@ -131,7 +131,7 @@ module.exports = function(grunt) {
 
         // Finish up task
         cmd.on('close', function(code) {
-            if (code === 2 || code === 1) {
+            if (code === 2 || code === 1 && !options.testing) {
                 grunt.fail.warn(''); // Force grunt fail on errors
             }
             done();
