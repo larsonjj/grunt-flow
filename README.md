@@ -80,6 +80,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+<strong>v1.0.1</strong> - Added logic to correctly exit task on Flow error.
+
 <strong>v1.0.0</strong> - Updated to latest version of flow (v0.14.0)
 
 <strong>v0.0.3</strong> - Fixed colorized output
