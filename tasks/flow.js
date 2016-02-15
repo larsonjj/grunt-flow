@@ -137,9 +137,9 @@ module.exports = function(grunt) {
             done();
         });
 
-        // Stop the server
+        // Stop the flow server
         if (options.server === true) {
-          // When we catch CTRL+C kill the flow server
+          // Catch CTRL+C  to kill the flow server
           process.on('SIGINT', function() {
             var closeServerCmd = spawn(flow, ['stop']);
             closeServerCmd.stdout.on('data', function(data) {
@@ -152,10 +152,6 @@ module.exports = function(grunt) {
             })
           }.bind(this));
         }
-
-        //  TODO: Find [include] text within .flowconfig
-
-        //  TODO: Find [ignore] text within .flowconfig
 
     });
 

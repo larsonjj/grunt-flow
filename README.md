@@ -46,7 +46,30 @@ A string value that is used to determine flow output styling. There are two opti
 Type: `Boolean`
 Default value: `true`
 
-If set, `flow` will be used which starts the background flow server.
+If set, `flow` instead of `flow check` will be used. This starts the background flow server, which is much more performant at re-running checks. 
+This should used in conjunction with [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch):
+
+```
+grunt.initConfig({
+  flow: {
+    watch: {
+      src: 'src/**/*.js',
+      options: {
+        server: true
+      }
+    }
+  },
+  watch : {
+      flow: {
+        files: ['src/**/*.js'],
+        tasks: ['flow'] // Get the status from the server
+      }
+    }
+});
+
+// Run 'flow' before the watch task to start the server
+grunt.registerTask('default', ['flow', 'watch']);
+```
 
 ### Usage
 
@@ -85,6 +108,8 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+
+<strong>v1.0.2</strong> - Added `server` option to allow for using the flow background server with the [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch) task.
 
 <strong>v1.0.1</strong> - Added logic to correctly exit task on Flow error.
 
