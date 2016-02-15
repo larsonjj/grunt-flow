@@ -19,7 +19,8 @@ module.exports = function(grunt) {
         // Merge task-specific and/or target-specific options with these defaults.
         var options = this.options({
             testing: false,
-            style: 'color'
+            style: 'color',
+            check: true
         });
 
         // Read .flowconfig file
@@ -115,7 +116,7 @@ module.exports = function(grunt) {
         var done = this.async();
 
         // Run `flow check` command
-        var cmd = spawn(flow, ['check'], {stdio: ['pipe']});
+        var cmd = spawn(flow, options['check'] ? ['check'] : [], {stdio: ['pipe']});
 
         cmd.stdout.on('data', function(data) {
             // Convert data buffer to ascii string and colorize output

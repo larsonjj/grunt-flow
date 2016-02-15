@@ -42,6 +42,12 @@ A string value that is used to determine flow output styling. There are two opti
 1. `color` - This will colorize the output from flow
 2. `none` - This will keep the default standard text output from flow without any color.
 
+#### options.check
+Type: `Boolean`
+Default value: `true`
+
+If set use `flow check` instead of the background flow server.
+
 ### Usage
 
 #### Config
