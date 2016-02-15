@@ -20,7 +20,7 @@ module.exports = function(grunt) {
         var options = this.options({
             testing: false,
             style: 'color',
-            check: true
+            server: false
         });
 
         // Read .flowconfig file
@@ -114,9 +114,8 @@ module.exports = function(grunt) {
         };
 
         var done = this.async();
-
         // Run `flow check` command
-        var cmd = spawn(flow, options['check'] ? ['check'] : [], {stdio: ['pipe']});
+        var cmd = spawn(flow, options.server ? [] : ['check'], {stdio: ['pipe']});
 
         cmd.stdout.on('data', function(data) {
             // Convert data buffer to ascii string and colorize output
@@ -137,6 +136,22 @@ module.exports = function(grunt) {
             }
             done();
         });
+
+        // Stop the server
+        if (options.server === true) {
+          // When we catch CTRL+C kill the flow server
+          process.on('SIGINT', function() {
+            var closeServerCmd = spawn(flow, ['stop']);
+            closeServerCmd.stdout.on('data', function(data) {
+                var output = data.toString('ascii', 0, data.length);
+                console.log(output);
+            });
+
+            closeServerCmd.on('close', function() {
+                process.kill(0);
+            })
+          }.bind(this));
+        }
 
         //  TODO: Find [include] text within .flowconfig
 
