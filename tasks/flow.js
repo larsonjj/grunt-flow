@@ -20,7 +20,7 @@ module.exports = function(grunt) {
         var options = this.options({
             testing: false,
             style: 'color',
-            check: true
+            server: false
         });
 
         // Read .flowconfig file
@@ -114,9 +114,8 @@ module.exports = function(grunt) {
         };
 
         var done = this.async();
-
         // Run `flow check` command
-        var cmd = spawn(flow, options['check'] ? ['check'] : [], {stdio: ['pipe']});
+        var cmd = spawn(flow, options.server ? [] : ['check'], {stdio: ['pipe']});
 
         cmd.stdout.on('data', function(data) {
             // Convert data buffer to ascii string and colorize output
@@ -132,15 +131,27 @@ module.exports = function(grunt) {
 
         // Finish up task
         cmd.on('close', function(code) {
-            if (!options.testing && (code === 2 || code === 1)) {
+            if (!options.testing && !options.server && (code === 2 || code === 1)) {
                 grunt.fail.warn(''); // Force grunt fail on errors
             }
             done();
         });
 
-        //  TODO: Find [include] text within .flowconfig
+        // Stop the flow server
+        if (options.server === true) {
+          // Catch CTRL+C  to kill the flow server
+          process.on('SIGINT', function() {
+            var closeServerCmd = spawn(flow, ['stop']);
+            closeServerCmd.stdout.on('data', function(data) {
+                var output = data.toString('ascii', 0, data.length);
+                console.log(output);
+            });
 
-        //  TODO: Find [ignore] text within .flowconfig
+            closeServerCmd.on('close', function() {
+                process.kill(0);
+            })
+          }.bind(this));
+        }
 
     });
 
