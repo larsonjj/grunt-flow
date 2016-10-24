@@ -20,11 +20,12 @@ module.exports = function(grunt) {
         var options = this.options({
             testing: false,
             style: 'color',
-            server: false
+            server: false,
+            config: '.flowconfig'
         });
 
         // Read .flowconfig file
-        var flowConfigFile = grunt.file.read('.flowconfig');
+        var flowConfigFile = grunt.file.read(options.config);
 
         if (!flowConfigFile) {
             return grunt.error('No .flowconfig file found!');

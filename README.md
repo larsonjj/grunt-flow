@@ -71,6 +71,12 @@ grunt.initConfig({
 grunt.registerTask('default', ['flow', 'watch']);
 ```
 
+#### options.config
+Type: `String`
+Default value: `.flowconfig`
+
+Path to the configuration file for flow.  Default is `.flowconfig` in the current directory.
+
 ### Usage
 
 #### Config
@@ -86,6 +92,8 @@ grunt.registerTask('default', ['flow', 'watch']);
 ```
 
 You can look up more information on the `.flowconfig` file on the flow [website](http://flowtype.org/docs/advanced-configuration.html#_)
+
+Note that you can set the path to configuration file with `options.config`.
 
 #### Task
 
