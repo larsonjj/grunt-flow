@@ -28,7 +28,7 @@ module.exports = function(grunt) {
         var flowConfigFile = grunt.file.read(options.config);
 
         if (!flowConfigFile) {
-            return grunt.error('No .flowconfig file found!');
+            return grunt.log.error('No .flowconfig file found!');
         }
 
         // Recreate color output from flow library
