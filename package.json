@@ -1,6 +1,6 @@
 {
   "name": "grunt-flow",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Validates JavaScript with Facebook's Flow Library",
   "homepage": "https://github.com/larsonjj/grunt-flow",
   "repository": "https://github.com/larsonjj/grunt-flow",
@@ -31,6 +31,9 @@
   },
   "scripts": {
     "test": "grunt test"
+  },
+  "peerDependencies": {
+    "flow-bin": ">0.1.1"
   },
   "dependencies": {
     "chalk": "^0.5.1",
