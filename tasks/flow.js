@@ -24,20 +24,6 @@ module.exports = function(grunt) {
             config: '.flowconfig'
         });
 
-        var procOpts = {
-        };
-        var procOptsPipe = {
-            stdio: ['pipe'],
-        };
-
-        var procOptsEnv = options.procOpts ? options.procOpts.env : undefined;
-        // could allow for additional process options, explicitly or by iteration...
-
-        if (procOptsEnv) {
-            procOpts.env = procOptsEnv;
-            procOptsPipe.env = procOptsEnv;
-        }
-
         // Read .flowconfig file
         var flowConfigFile = grunt.file.read(options.config);
 
@@ -130,7 +116,7 @@ module.exports = function(grunt) {
 
         var done = this.async();
         // Run `flow check` command
-        var cmd = spawn(flow, options.server ? [] : ['check'], procOptsPipe);
+        var cmd = spawn(flow, options.server ? [] : ['check'], {stdio: ['pipe']});
 
         cmd.stdout.on('data', function(data) {
             // Convert data buffer to ascii string and colorize output
@@ -156,7 +142,7 @@ module.exports = function(grunt) {
         if (options.server === true) {
           // Catch CTRL+C  to kill the flow server
           process.on('SIGINT', function() {
-            var closeServerCmd = spawn(flow, ['stop'], procOpts);
+            var closeServerCmd = spawn(flow, ['stop']);
             closeServerCmd.stdout.on('data', function(data) {
                 var output = data.toString('ascii', 0, data.length);
                 console.log(output);
@@ -164,7 +150,7 @@ module.exports = function(grunt) {
 
             closeServerCmd.on('close', function() {
                 process.kill(0);
-            });
+            })
           }.bind(this));
         }
 
