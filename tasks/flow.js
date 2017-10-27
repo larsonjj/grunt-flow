@@ -150,7 +150,7 @@ module.exports = function(grunt) {
 
             closeServerCmd.on('close', function() {
                 process.kill(0);
-            })
+            });
           }.bind(this));
         }
 

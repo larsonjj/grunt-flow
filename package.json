@@ -31,7 +31,9 @@
     "flow-bin": ">0.1.1"
   },
   "scripts": {
-    "test": "./node_modules/.bin/grunt test"
+    "test": "./node_modules/.bin/grunt test",
+    "preversion": "npm test",
+    "postversion": "git push && git push --tags"
   },
   "peerDependencies": {
     "flow-bin": ">0.1.1"
