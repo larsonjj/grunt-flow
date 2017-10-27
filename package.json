@@ -18,16 +18,16 @@
   ],
   "main": "Gruntfile.js",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 4.0.0"
   },
   "license": "MIT",
   "devDependencies": {
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-jshint": "~0.8.0",
-    "grunt-contrib-nodeunit": "~0.3.0",
-    "grunt": "~0.4.2",
+    "grunt-contrib-clean": "~1.1.0",
+    "grunt-contrib-jshint": "~1.1.0",
+    "grunt-contrib-nodeunit": "~1.0.0",
+    "grunt": "~1.0.1",
     "jshint-stylish": "~0.1.5",
-    "load-grunt-tasks": "~0.3.0",
+    "load-grunt-tasks": "~3.5.2",
     "flow-bin": ">0.1.1"
   },
   "scripts": {
@@ -37,6 +37,6 @@
     "flow-bin": ">0.1.1"
   },
   "dependencies": {
-    "chalk": "^0.5.1"
+    "chalk": "~2.3.0"
   }
 }
