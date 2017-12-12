@@ -115,21 +115,5 @@ grunt.initConfig({
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
-## Release History
-
-<strong>v1.0.3</strong> - Fixed logic so that all error codes above `0` cause a grunt failure
-
-<strong>v1.0.2</strong> - Added `server` option to allow for using the flow background server with the [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch) task.
-
-<strong>v1.0.1</strong> - Added logic to correctly exit task on Flow error.
-
-<strong>v1.0.0</strong> - Updated to latest version of flow (v0.14.0)
-
-<strong>v0.0.3</strong> - Fixed colorized output
-
-<strong>v0.0.2</strong> - Added `style` option to enable colorized output
-
-<strong>v0.0.1</strong> - Initial release
-
 ## License
 Copyright (c) 2015 Jake Larson. Licensed under the MIT license.
